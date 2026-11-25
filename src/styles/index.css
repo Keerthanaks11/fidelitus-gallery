@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body { @apply bg-white text-brand antialiased; }
+
+/* SUMI-style finishing touches */
+html { background: #0d0907; position: relative; }
+::selection { background: #F39314; color: #fff; }
+html { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.25) transparent; }
+img { -webkit-user-drag: none; }

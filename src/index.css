@@ -1,0 +1,43 @@
+/* ----- Showcase rows ----- */
+.marquee {
+  --visible: 2;            /* tiles visible on mobile */
+}
+@media (min-width: 768px) {
+  .marquee { --visible: 4; } /* tiles visible on desktop */
+}
+
+.marquee-track {
+  display: flex;
+  width: calc(12 * 100% / var(--visible)); /* 12 tiles in the track */
+}
+
+.showcase-tile {
+  width: calc(100% / 12);
+  flex-shrink: 0;
+  box-sizing: border-box;
+  padding-right: 12px;     /* gap between tiles */
+  aspect-ratio: 1 / 1.02;
+}
+
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-33.3333%); }
+}
+@keyframes marquee-right {
+  from { transform: translateX(-33.3333%); }
+  to   { transform: translateX(0); }
+}
+@keyframes zoom-loop {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.12); }
+}
+
+.marquee-left  { animation: marquee-left 40s linear infinite; }
+.marquee-right { animation: marquee-right 40s linear infinite; }
+.zoom-loop     { animation: zoom-loop 8s ease-in-out infinite; will-change: transform; }
+
+.marquee:hover .marquee-track { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-left, .marquee-right, .zoom-loop { animation: none; }
+}
